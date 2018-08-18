@@ -7,7 +7,7 @@
 
 
 (defun sessions-list ()
- (filter-list (directory-files sessions-path) '("." "..")))
+ (seq-remove (lambda (x) (or (string= x ".") (string= x ".."))) (directory-files sessions-path)))
 
 (defun sessions ()
  (interactive)
